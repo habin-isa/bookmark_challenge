@@ -9,6 +9,7 @@ ruby "2.5.0"
 gem 'capybara'
 gem 'rspec'
 gem 'sinatra'
+gem 'pg'
 
 # gem "rails"
 
