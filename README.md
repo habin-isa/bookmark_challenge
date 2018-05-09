@@ -6,4 +6,13 @@ Additionally you can browse bookmarks that other users have added and comment on
 
 Before building this project we created user stories and domain models.
 
+```
+As someone who does not have a up to date browser
+I would like to see my favourite websites
+
+As someone who has bad download speeds and cant download chrome
+I would like to be able to add my favourite websites
+I would like to be able to see these websites in my list
+```
+
 ![alt text](https://imgur.com/HD5NS2Y)
