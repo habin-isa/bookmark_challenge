@@ -1,8 +1,8 @@
 feature 'when user clicks a button they see a list of bookmarks' do
-  scenario 'prints list of bookmarks' do
+  scenario 'adds a url to the page' do
+    connection = PG.connect(dbname:'bookmark_manager_test')
+    connection.exec("INSERT INTO bookmarks(url) VALUES('https://www.spareroom.co.uk/')")
     visit ('/bookmarks')
-    expect(page).to have_content 'http://huhmagazine.co.uk/'
-    expect(page).to have_content 'https://hinge.co/'
-    expect(page).to have_content 'www.deliveroo.com'
+    expect(page).to have_content "https://www.spareroom.co.uk/"
   end
 end
