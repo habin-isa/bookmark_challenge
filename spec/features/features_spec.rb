@@ -10,9 +10,9 @@ end
 feature 'when user submits url on form, should add the url to list' do
   scenario 'fills in form and prints postmanpat link' do
     visit('/')
-    fill_in('url', :with => 'www.postmanpat.com')
+    fill_in('url', :with => 'https://www.google.co.uk/')
     click_button('submit')
-    expect(page).to have_content("www.postmanpat.com")
+    expect(page).to have_content("https://www.google.co.uk/")
   end
 end
 
@@ -21,7 +21,7 @@ feature 'checks that the user submits a valid url' do
     visit('/')
     fill_in('url', :with => 'wrong link')
     click_button('submit')
-    expect(page).to have_content("Invalid url!")
+    expect(page).to have_content("You must submit a valid URL.")
   end
   scenario 'fills in form with valid url and no error message' do
     visit('/')
