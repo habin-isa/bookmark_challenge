@@ -15,3 +15,12 @@ feature 'when user submits url on form, should add the url to list' do
     expect(page).to have_content("www.postmanpat.com")
   end
 end
+
+feature 'checks that the user submits a valid url' do
+  scenario 'fills in form with invalid url then raises an error' do
+    visit('/')
+    fill_in('url', :with => 'wrong link')
+    click_button('submit')
+    expect(page).to raise_error("Invalid url!")
+  end
+end
