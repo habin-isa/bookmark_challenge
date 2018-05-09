@@ -7,15 +7,14 @@ enable :sessions
 register Sinatra::Flash
 
   get '/' do
-    puts flash[:notice]
     @bookmarks = Bookmark.all
     erb(:index)
   end
 
   post '/create' do
-          Bookmark.create(params['url'])
-          flash[:notice] = "You must submit a valid URL." if Bookmark.url_real(params['url']) == nil
-          redirect '/'
+    Bookmark.create(params['url'], params['title'])
+    flash[:notice] = "You must submit a valid URL." if Bookmark.url_real(params['url']) == nil
+    redirect '/'
   end
 
 

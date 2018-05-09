@@ -15,16 +15,16 @@ class Bookmark
     end
   end
 
-  def self.create(url)
+  def self.create(url, title)
     x = Bookmark.url_real(url)
     if x == nil
       false
     elsif ENV['RACK_ENV'] == 'test'
       connection = PG.connect(dbname:'bookmark_manager_test')
-      connection.exec("INSERT INTO bookmarks(url) VALUES('#{url}')")
+      connection.exec("INSERT INTO bookmarks(url, title) VALUES('#{url}', '#{title}')")
     else
       connection = PG.connect(dbname:'bookmark_manager')
-      connection.exec("INSERT INTO bookmarks(url) VALUES('#{url}')")
+      connection.exec("INSERT INTO bookmarks(url, title) VALUES('#{url}', '#{title}')")
     end
   end
 
