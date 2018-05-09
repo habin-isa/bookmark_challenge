@@ -7,6 +7,7 @@ enable :sessions
 register Sinatra::Flash
 
   get '/' do
+    flash[:notice] = "Invalid url!" unless Bookmark.create(url: params['url'])
     @bookmarks = Bookmark.all
     erb(:index)
   end
@@ -14,11 +15,7 @@ register Sinatra::Flash
   post '/create' do
     @url = params[:url]
     Bookmark.create(@url)
-    flash[:notice] = "Invalid url!"
     redirect('/')
   end
-
-
-
   run! if app_file == $0
 end

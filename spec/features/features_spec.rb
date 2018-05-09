@@ -21,6 +21,12 @@ feature 'checks that the user submits a valid url' do
     visit('/')
     fill_in('url', :with => 'wrong link')
     click_button('submit')
-    expect(page).to raise_error("Invalid url!")
+    expect(page).to have_content("Invalid url!")
+  end
+  scenario 'fills in form with valid url and no error message' do
+    visit('/')
+    fill_in('url', :with => 'https://www.google.co.uk/')
+    click_button('submit')
+    expect(page).to have_no_content("Invalid url!")
   end
 end
